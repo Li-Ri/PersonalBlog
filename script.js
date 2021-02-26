@@ -1,6 +1,13 @@
 "use strict";
 
-const Text = document.querySelector("#editor");
+exports.getDate = function () {
+  const today = new Date();
 
-const html = Text.children[0].innerHTML;
-console.log(Text);
+  const options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  };
+
+  return today.toLocaleDateString("en-US", options);
+};

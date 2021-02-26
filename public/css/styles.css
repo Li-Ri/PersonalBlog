@@ -78,6 +78,10 @@ nav {
   color: white;
 }
 
+#post-content {
+  white-space: pre-wrap;
+}
+
 hr {
   margin: 10px 200px 10px 40px;
 }
@@ -87,6 +91,7 @@ hr {
 .blog-post-title {
   display: inline-block;
   width: 200px;
+  margin-top: 20px;
 }
 
 .blog-post-date {
@@ -117,23 +122,25 @@ hr {
 .btn {
   padding: 20px;
   display: inline-block;
-  margin: 20px 60%;
+  margin-top: 20px;
+  margin-left: 670px;
   background-color: #7fe5f0;
   border: none;
 }
 
 textarea {
-  margin: 0 36%;
+  margin-left: 400px;
   border-radius: 5px;
   border: 1px solid #888;
 }
 
 #postTitle {
-  margin: 0 36%;
+  margin-left: 400px;
   width: 375px;
 }
 
 label {
-  margin: 0 36%;
+  margin-left: 36%;
   color: white;
+  margin-bottom: 10px;
 }

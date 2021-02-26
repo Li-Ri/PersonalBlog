@@ -4,6 +4,8 @@ const ejs = require("ejs");
 const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
+const date = require(__dirname + "/script.js");
+
 const posts = [];
 mongoose.connect("mongodb://localhost/blogDB");
 const commentSchema = mongoose.Schema({
@@ -17,6 +19,7 @@ const postSchema = mongoose.Schema({
   title: String,
   content: String,
   comments: commentSchema,
+  date: String,
 });
 
 const Post = mongoose.model("Post", postSchema);
@@ -53,10 +56,15 @@ app.get("/compose", (req, res) => {
   res.render("compose");
 });
 
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+
 app.post("/", (req, res) => {
   const postObject = new Post({
     title: req.body.postTitle,
     content: req.body.inputField,
+    date: date.getDate(),
   });
 
   postObject.save();

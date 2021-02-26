@@ -21,16 +21,16 @@
     <h1>Recent Posts</h1>
   </div>
   <hr />
+  <% blogPosts.forEach(post => { %>
   <div class="blog-post__items">
-    <% blogPosts.forEach(post => { %>
     <div class="section-content">
       <div class="blog-post-title">
         <h2><%=post.title%></h2>
       </div>
       <div class="blog-post-date">
-        <h3>27/02/2021</h3>
+        <h3><%=post.date%></h3>
       </div>
-      <div><%=post.content%></div>
+      <div id="post-content"><%=post.content%></div>
     </div>
   </div>
   <%});%>
