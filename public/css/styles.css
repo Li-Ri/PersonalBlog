@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.background {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 10%, transparent),
+    url("../images/background-image.jpg");
+  background-size: cover;
+  background-position: left 100% bottom 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: fixed;
+}
+
+/* Navbar */
+header {
+  background-color: #008080;
+  margin-bottom: 40px;
+}
+
+#main-header {
+  display: inline-block;
+  margin: 10px;
+  color: white;
+}
+
+nav {
+  width: calc(100% - 300px);
+  text-align: right;
+  display: inline-block;
+}
+.main-nav__items {
+  list-style: none;
+  color: white;
+  width: 100%;
+}
+
+.main-nav__link {
+  display: inline-block;
+  text-align: right;
+  padding: 8px 16px;
+}
+
+.main-nav__link a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-nav__link a:hover,
+.main-nav__link a:active {
+  border-bottom: 2px solid white;
+  transition: ease-in-out;
+}
+
+/* body - Home */
+
+.home {
+  padding: 20px 0;
+  text-align: left;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-left: 40px;
+  color: white;
+}
+.home hr {
+  font-weight: bold;
+}
+
+.section-content {
+  margin: 0 80px 0 40px;
+  color: white;
+}
+
+hr {
+  margin: 10px 200px 10px 40px;
+}
+
+/* body - Posts */
+
+.blog-post-title {
+  display: inline-block;
+  width: 200px;
+}
+
+.blog-post-date {
+  width: calc(100% - 300px);
+  text-align: right;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Compose -editor */
+
+#editor {
+  width: 60%;
+  margin: 0 auto;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.ql-toolbar {
+  width: 60%;
+  margin: 0 auto;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.btn {
+  padding: 20px;
+  display: inline-block;
+  margin: 20px 60%;
+  background-color: #7fe5f0;
+  border: none;
+}
+
+textarea {
+  margin: 0 36%;
+  border-radius: 5px;
+  border: 1px solid #888;
+}
+
+#postTitle {
+  margin: 0 36%;
+  width: 375px;
+}
+
+label {
+  margin: 0 36%;
+  color: white;
+}

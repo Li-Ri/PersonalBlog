@@ -1,0 +1,39 @@
+<%- include('header'); -%>
+<main>
+  <div class="home">
+    <div class="section-title">
+      <h1>Home</h1>
+    </div>
+    <hr />
+    <div class="section-content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non
+        diam justo. Quisque suscipit egestas porttitor. In dapibus, purus nec
+        vestibulum dignissim, tortor velit fringilla velit, at imperdiet est
+        elit ut felis. Ut vitae justo facilisis magna sollicitudin iaculis
+        sodales lobortis tellus. Nullam dui ipsum, congue vitae ullamcorper
+        eget, fermentum eu massa. Integer in euismod augue. Pellentesque eget
+        laoreet sapien.
+      </p>
+    </div>
+  </div>
+  <div class="section-title">
+    <h1>Recent Posts</h1>
+  </div>
+  <hr />
+  <div class="blog-post__items">
+    <% blogPosts.forEach(post => { %>
+    <div class="section-content">
+      <div class="blog-post-title">
+        <h2><%=post.title%></h2>
+      </div>
+      <div class="blog-post-date">
+        <h3>27/02/2021</h3>
+      </div>
+      <div><%=post.content%></div>
+    </div>
+  </div>
+  <%});%>
+</main>
+
+<%- include('footer'); -%>
