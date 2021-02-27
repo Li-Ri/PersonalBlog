@@ -21,6 +21,8 @@
 header {
   background-color: #008080;
   margin-bottom: 40px;
+  width: 100%;
+  position: fixed;
 }
 
 #main-header {
