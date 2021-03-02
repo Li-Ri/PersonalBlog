@@ -1,0 +1,24 @@
+<%-include('header');-%>
+
+<main style="padding-top: 100px">
+  <div class="blog-post__items">
+    <div class="section-content">
+      <div class="blog-post-title">
+        <h2><%=title%></h2>
+      </div>
+      <div id="post-content"><%= content%></div>
+      <hr />
+      <% comments.forEach( comment => { %>
+      <div id="post-content"><%=comment.name%>: <%=comment.comment%></div>
+      <div id="post-content"></div>
+      <%})%>
+    </div>
+    <form action="/posts/<%=title%>" method="post" id="comment-form">
+      <input type="text" name="commenter" placeholder="Name" id="commenter" />
+      <input type="text" name="comment" placeholder="Comment..." id="comment" />
+      <button type="submit">post</button>
+    </form>
+  </div>
+</main>
+
+<%- include('footer'); -%>

@@ -22,7 +22,6 @@ header {
   background-color: #008080;
   margin-bottom: 40px;
   width: 100%;
-  position: fixed;
 }
 
 #main-header {
@@ -130,23 +129,29 @@ hr {
   border: none;
 }
 
+form {
+  padding-top: 100px;
+}
 textarea {
-  margin-left: 400px;
+  margin-left: 200px;
   border-radius: 5px;
   border: 1px solid #888;
 }
 
 #postTitle {
-  margin-left: 400px;
+  margin-left: 200px;
   width: 375px;
+  border-radius: 5px;
+  height: 40px;
+  margin-bottom: 30px;
+  font-size: 20px;
 }
 
-label {
-  margin-left: 36%;
-  color: white;
-  margin-bottom: 10px;
-}
+/* Comments section */
 
+#comment-form {
+  margin: 0 420px;
+}
 /* footer */
 
 #footer {

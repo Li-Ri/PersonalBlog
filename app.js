@@ -5,9 +5,11 @@ const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
 const date = require(__dirname + "/script.js");
-
+const _ = require("lodash");
 const posts = [];
-mongoose.connect("mongodb://localhost/blogDB");
+mongoose.connect("mongodb://localhost/blogDB", {
+  useUnifiedTopology: true,
+});
 const commentSchema = mongoose.Schema({
   name: String,
   comment: String,
@@ -18,25 +20,11 @@ const Comment = mongoose.model("Comment", commentSchema);
 const postSchema = mongoose.Schema({
   title: String,
   content: String,
-  comments: commentSchema,
+  comments: [commentSchema],
   date: String,
 });
 
 const Post = mongoose.model("Post", postSchema);
-
-const comment1 = new Comment({
-  name: "Jane Doe",
-  comment: "This post is garbage",
-});
-
-const post1 = new Post({
-  title: "Day 1",
-  content: "This is a test",
-  comments: comment1,
-});
-
-const samplePost =
-  "Donec et odio nisi. Etiam sed ornare urna. Sed pharetra id neque vel efficitur. Suspendisse eu dignissim urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed maximus consectetur interdum. Aenean quis lobortis dolor. Donec et iaculis tortor. Nullam luctus rutrum massa vitae ultrices. Mauris pharetra tortor diam, id ullamcorper nulla aliquet in. In facilisis urna leo, sed laoreet nulla maximus a. In eget sagittis nulla. Nam ligula magna, ornare vel tortor nec, ultrices convallis ligula. Nulla sit amet turpis pellentesque, egestas sapien quis, commodo augue.";
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,6 +48,22 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
+app.get("/posts/:customPost", (req, res) => {
+  const customPost = req.params.customPost;
+
+  Post.findOne({ title: customPost }, (err, foundPost) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("post", {
+        title: foundPost.title,
+        content: foundPost.content,
+        comments: foundPost.comments,
+      });
+    }
+  });
+});
+
 app.post("/", (req, res) => {
   const postObject = new Post({
     title: req.body.postTitle,
@@ -67,9 +71,26 @@ app.post("/", (req, res) => {
     date: date.getDate(),
   });
 
+  posts.push(postObject);
   postObject.save();
 
   res.redirect("/");
+});
+
+app.post("/posts/:customPost", (req, res) => {
+  const customPost = req.params.customPost;
+  const comment = { name: req.body.commenter, comment: req.body.comment };
+
+  Post.findOne({ title: customPost }, (err, foundPost) => {
+    if (err) {
+      console.log(err);
+    } else {
+      foundPost.comments.push(comment);
+      foundPost.save();
+      res.redirect("/posts/" + customPost);
+    }
+    customPost;
+  });
 });
 
 app.listen(port, () => {
